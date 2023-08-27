@@ -1,0 +1,487 @@
+
+/Users/cxt/Reposities/ArmNeonOptimization/reluTest/build_android/CMakeFiles/assemblyReluTest.dir/assemblyReluTest.cpp.o:     file format elf32-littlearm
+
+
+Disassembly of section .text._Z5reluCPKfiPf:
+
+00000000 <_Z5reluCPKfiPf>:
+   0:	b5d0      	push	{r4, r6, r7, lr}
+   2:	af02      	add	r7, sp, #8
+   4:	2901      	cmp	r1, #1
+   6:	db31      	blt.n	6c <_Z5reluCPKfiPf+0x6c>
+   8:	2903      	cmp	r1, #3
+   a:	d91a      	bls.n	42 <_Z5reluCPKfiPf+0x42>
+   c:	eb00 0381 	add.w	r3, r0, r1, lsl #2
+  10:	4293      	cmp	r3, r2
+  12:	bf84      	itt	hi
+  14:	eb02 0381 	addhi.w	r3, r2, r1, lsl #2
+  18:	4283      	cmphi	r3, r0
+  1a:	d812      	bhi.n	42 <_Z5reluCPKfiPf+0x42>
+  1c:	f021 0c03 	bic.w	ip, r1, #3
+  20:	efc0 0050 	vmov.i32	q8, #0	; 0x00000000
+  24:	4613      	mov	r3, r2
+  26:	4604      	mov	r4, r0
+  28:	46e6      	mov	lr, ip
+  2a:	f964 2a8d 	vld1.32	{d18-d19}, [r4]!
+  2e:	f1be 0e04 	subs.w	lr, lr, #4
+  32:	ef42 2fe0 	vmax.f32	q9, q9, q8
+  36:	f943 2a8d 	vst1.32	{d18-d19}, [r3]!
+  3a:	d1f6      	bne.n	2a <_Z5reluCPKfiPf+0x2a>
+  3c:	458c      	cmp	ip, r1
+  3e:	d102      	bne.n	46 <_Z5reluCPKfiPf+0x46>
+  40:	e014      	b.n	6c <_Z5reluCPKfiPf+0x6c>
+  42:	f04f 0c00 	mov.w	ip, #0
+  46:	eb00 008c 	add.w	r0, r0, ip, lsl #2
+  4a:	eb02 028c 	add.w	r2, r2, ip, lsl #2
+  4e:	eba1 010c 	sub.w	r1, r1, ip
+  52:	ed9f 0a07 	vldr	s0, [pc, #28]	; 70 <_Z5reluCPKfiPf+0x70>
+  56:	ed90 1a00 	vldr	s2, [r0]
+  5a:	3004      	adds	r0, #4
+  5c:	ef01 1f00 	vmax.f32	d1, d1, d0
+  60:	3901      	subs	r1, #1
+  62:	ed82 1a00 	vstr	s2, [r2]
+  66:	f102 0204 	add.w	r2, r2, #4
+  6a:	d1f4      	bne.n	56 <_Z5reluCPKfiPf+0x56>
+  6c:	2001      	movs	r0, #1
+  6e:	bdd0      	pop	{r4, r6, r7, pc}
+  70:	00000000 	.word	0x00000000
+
+Disassembly of section .text._Z8reluNeonPKfiPf:
+
+00000000 <_Z8reluNeonPKfiPf>:
+   0:	b5f0      	push	{r4, r5, r6, r7, lr}
+   2:	af03      	add	r7, sp, #12
+   4:	f84d bd04 	str.w	fp, [sp, #-4]!
+   8:	f021 0e03 	bic.w	lr, r1, #3
+   c:	2904      	cmp	r1, #4
+   e:	db0f      	blt.n	30 <_Z8reluNeonPKfiPf+0x30>
+  10:	efc0 0050 	vmov.i32	q8, #0	; 0x00000000
+  14:	ea4f 0ca1 	mov.w	ip, r1, asr #2
+  18:	2500      	movs	r5, #0
+  1a:	4614      	mov	r4, r2
+  1c:	4603      	mov	r3, r0
+  1e:	f963 2a8d 	vld1.32	{d18-d19}, [r3]!
+  22:	3501      	adds	r5, #1
+  24:	ef42 2fe0 	vmax.f32	q9, q9, q8
+  28:	4565      	cmp	r5, ip
+  2a:	f944 2a8d 	vst1.32	{d18-d19}, [r4]!
+  2e:	dbf6      	blt.n	1e <_Z8reluNeonPKfiPf+0x1e>
+  30:	458e      	cmp	lr, r1
+  32:	da33      	bge.n	9c <_Z8reluNeonPKfiPf+0x9c>
+  34:	eba1 0c0e 	sub.w	ip, r1, lr
+  38:	f1bc 0f03 	cmp.w	ip, #3
+  3c:	d91b      	bls.n	76 <_Z8reluNeonPKfiPf+0x76>
+  3e:	eb00 038e 	add.w	r3, r0, lr, lsl #2
+  42:	eb00 0581 	add.w	r5, r0, r1, lsl #2
+  46:	eb02 048e 	add.w	r4, r2, lr, lsl #2
+  4a:	42ac      	cmp	r4, r5
+  4c:	bf3c      	itt	cc
+  4e:	eb02 0581 	addcc.w	r5, r2, r1, lsl #2
+  52:	42ab      	cmpcc	r3, r5
+  54:	d30f      	bcc.n	76 <_Z8reluNeonPKfiPf+0x76>
+  56:	f02c 0503 	bic.w	r5, ip, #3
+  5a:	efc0 0050 	vmov.i32	q8, #0	; 0x00000000
+  5e:	44ae      	add	lr, r5
+  60:	462e      	mov	r6, r5
+  62:	f963 2a8d 	vld1.32	{d18-d19}, [r3]!
+  66:	3e04      	subs	r6, #4
+  68:	ef42 2fe0 	vmax.f32	q9, q9, q8
+  6c:	f944 2a8d 	vst1.32	{d18-d19}, [r4]!
+  70:	d1f7      	bne.n	62 <_Z8reluNeonPKfiPf+0x62>
+  72:	45ac      	cmp	ip, r5
+  74:	d012      	beq.n	9c <_Z8reluNeonPKfiPf+0x9c>
+  76:	eb00 008e 	add.w	r0, r0, lr, lsl #2
+  7a:	eb02 028e 	add.w	r2, r2, lr, lsl #2
+  7e:	eba1 010e 	sub.w	r1, r1, lr
+  82:	ed9f 0a08 	vldr	s0, [pc, #32]	; a4 <_Z8reluNeonPKfiPf+0xa4>
+  86:	ed90 1a00 	vldr	s2, [r0]
+  8a:	3004      	adds	r0, #4
+  8c:	ef01 1f00 	vmax.f32	d1, d1, d0
+  90:	3901      	subs	r1, #1
+  92:	ed82 1a00 	vstr	s2, [r2]
+  96:	f102 0204 	add.w	r2, r2, #4
+  9a:	d1f4      	bne.n	86 <_Z8reluNeonPKfiPf+0x86>
+  9c:	2001      	movs	r0, #1
+  9e:	f85d bb04 	ldr.w	fp, [sp], #4
+  a2:	bdf0      	pop	{r4, r5, r6, r7, pc}
+  a4:	00000000 	.word	0x00000000
+
+Disassembly of section .text._Z12reluAssemblePKfiPf:
+
+00000000 <_Z12reluAssemblePKfiPf>:
+   0:	b5f0      	push	{r4, r5, r6, r7, lr}
+   2:	af03      	add	r7, sp, #12
+   4:	f84d bd04 	str.w	fp, [sp, #-4]!
+   8:	108b      	asrs	r3, r1, #2
+   a:	ef80 0050 	vmov.i32	q0, #0	; 0x00000000
+   e:	f920 2a8d 	vld1.32	{d2-d3}, [r0]!
+  12:	ef00 2f42 	vmax.f32	q1, q0, q1
+  16:	3b01      	subs	r3, #1
+  18:	f902 2a8d 	vst1.32	{d2-d3}, [r2]!
+  1c:	dcf7      	bgt.n	e <_Z12reluAssemblePKfiPf+0xe>
+  1e:	f021 0e03 	bic.w	lr, r1, #3
+  22:	458e      	cmp	lr, r1
+  24:	da33      	bge.n	8e <_Z12reluAssemblePKfiPf+0x8e>
+  26:	eba1 0c0e 	sub.w	ip, r1, lr
+  2a:	f1bc 0f03 	cmp.w	ip, #3
+  2e:	d91b      	bls.n	68 <_Z12reluAssemblePKfiPf+0x68>
+  30:	eb00 038e 	add.w	r3, r0, lr, lsl #2
+  34:	eb00 0581 	add.w	r5, r0, r1, lsl #2
+  38:	eb02 048e 	add.w	r4, r2, lr, lsl #2
+  3c:	42ac      	cmp	r4, r5
+  3e:	bf3c      	itt	cc
+  40:	eb02 0581 	addcc.w	r5, r2, r1, lsl #2
+  44:	42ab      	cmpcc	r3, r5
+  46:	d30f      	bcc.n	68 <_Z12reluAssemblePKfiPf+0x68>
+  48:	f02c 0503 	bic.w	r5, ip, #3
+  4c:	efc0 0050 	vmov.i32	q8, #0	; 0x00000000
+  50:	44ae      	add	lr, r5
+  52:	462e      	mov	r6, r5
+  54:	f963 2a8d 	vld1.32	{d18-d19}, [r3]!
+  58:	3e04      	subs	r6, #4
+  5a:	ef42 2fe0 	vmax.f32	q9, q9, q8
+  5e:	f944 2a8d 	vst1.32	{d18-d19}, [r4]!
+  62:	d1f7      	bne.n	54 <_Z12reluAssemblePKfiPf+0x54>
+  64:	45ac      	cmp	ip, r5
+  66:	d012      	beq.n	8e <_Z12reluAssemblePKfiPf+0x8e>
+  68:	eb00 008e 	add.w	r0, r0, lr, lsl #2
+  6c:	eb02 028e 	add.w	r2, r2, lr, lsl #2
+  70:	eba1 010e 	sub.w	r1, r1, lr
+  74:	ed9f 0a08 	vldr	s0, [pc, #32]	; 98 <_Z12reluAssemblePKfiPf+0x98>
+  78:	ed90 1a00 	vldr	s2, [r0]
+  7c:	3004      	adds	r0, #4
+  7e:	ef01 1f00 	vmax.f32	d1, d1, d0
+  82:	3901      	subs	r1, #1
+  84:	ed82 1a00 	vstr	s2, [r2]
+  88:	f102 0204 	add.w	r2, r2, #4
+  8c:	d1f4      	bne.n	78 <_Z12reluAssemblePKfiPf+0x78>
+  8e:	2001      	movs	r0, #1
+  90:	f85d bb04 	ldr.w	fp, [sp], #4
+  94:	bdf0      	pop	{r4, r5, r6, r7, pc}
+  96:	bf00      	nop
+  98:	00000000 	.word	0x00000000
+
+Disassembly of section .text._Z11checkResultPKfS0_iRKNSt6__ndk112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE:
+
+00000000 <_Z11checkResultPKfS0_iRKNSt6__ndk112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE>:
+   0:	b5b0      	push	{r4, r5, r7, lr}
+   2:	af02      	add	r7, sp, #8
+   4:	2a01      	cmp	r2, #1
+   6:	db05      	blt.n	14 <_Z11checkResultPKfS0_iRKNSt6__ndk112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE+0x14>
+   8:	2a03      	cmp	r2, #3
+   a:	d805      	bhi.n	18 <_Z11checkResultPKfS0_iRKNSt6__ndk112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE+0x18>
+   c:	f04f 0c00 	mov.w	ip, #0
+  10:	2400      	movs	r4, #0
+  12:	e021      	b.n	58 <_Z11checkResultPKfS0_iRKNSt6__ndk112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE+0x58>
+  14:	2400      	movs	r4, #0
+  16:	e033      	b.n	80 <_Z11checkResultPKfS0_iRKNSt6__ndk112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE+0x80>
+  18:	f022 0c03 	bic.w	ip, r2, #3
+  1c:	efc0 0050 	vmov.i32	q8, #0	; 0x00000000
+  20:	460c      	mov	r4, r1
+  22:	4605      	mov	r5, r0
+  24:	46e6      	mov	lr, ip
+  26:	f964 2a8d 	vld1.32	{d18-d19}, [r4]!
+  2a:	f1be 0e04 	subs.w	lr, lr, #4
+  2e:	f965 4a8d 	vld1.32	{d20-d21}, [r5]!
+  32:	ef44 2ee2 	vceq.f32	q9, q10, q9
+  36:	fff0 25e2 	vmvn	q9, q9
+  3a:	ff60 08e2 	vsub.i32	q8, q8, q9
+  3e:	d1f2      	bne.n	26 <_Z11checkResultPKfS0_iRKNSt6__ndk112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE+0x26>
+  40:	eff0 28e0 	vext.8	q9, q8, q8, #8
+  44:	4594      	cmp	ip, r2
+  46:	ef60 08e2 	vadd.i32	q8, q8, q9
+  4a:	fffc 2c60 	vdup.32	q9, d16[1]
+  4e:	ef60 08e2 	vadd.i32	q8, q8, q9
+  52:	ee10 4b90 	vmov.32	r4, d16[0]
+  56:	d013      	beq.n	80 <_Z11checkResultPKfS0_iRKNSt6__ndk112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE+0x80>
+  58:	eb00 008c 	add.w	r0, r0, ip, lsl #2
+  5c:	eb01 018c 	add.w	r1, r1, ip, lsl #2
+  60:	eba2 020c 	sub.w	r2, r2, ip
+  64:	ed91 0a00 	vldr	s0, [r1]
+  68:	3104      	adds	r1, #4
+  6a:	ed90 1a00 	vldr	s2, [r0]
+  6e:	3004      	adds	r0, #4
+  70:	eeb4 1a40 	vcmp.f32	s2, s0
+  74:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
+  78:	bf18      	it	ne
+  7a:	3401      	addne	r4, #1
+  7c:	3a01      	subs	r2, #1
+  7e:	d1f1      	bne.n	64 <_Z11checkResultPKfS0_iRKNSt6__ndk112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE+0x64>
+  80:	7818      	ldrb	r0, [r3, #0]
+  82:	6899      	ldr	r1, [r3, #8]
+  84:	07c0      	lsls	r0, r0, #31
+  86:	bf08      	it	eq
+  88:	1c59      	addeq	r1, r3, #1
+  8a:	b134      	cbz	r4, 9a <_Z11checkResultPKfS0_iRKNSt6__ndk112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE+0x9a>
+  8c:	4806      	ldr	r0, [pc, #24]	; (a8 <_Z11checkResultPKfS0_iRKNSt6__ndk112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE+0xa8>)
+  8e:	4622      	mov	r2, r4
+  90:	4478      	add	r0, pc
+  92:	f7ff fffe 	bl	0 <printf>
+  96:	4620      	mov	r0, r4
+  98:	bdb0      	pop	{r4, r5, r7, pc}
+  9a:	4804      	ldr	r0, [pc, #16]	; (ac <_Z11checkResultPKfS0_iRKNSt6__ndk112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE+0xac>)
+  9c:	4478      	add	r0, pc
+  9e:	f7ff fffe 	bl	0 <printf>
+  a2:	4620      	mov	r0, r4
+  a4:	bdb0      	pop	{r4, r5, r7, pc}
+  a6:	bf00      	nop
+  a8:	00000014 	.word	0x00000014
+  ac:	0000000c 	.word	0x0000000c
+
+Disassembly of section .text.main:
+
+00000000 <main>:
+   0:	b5f0      	push	{r4, r5, r6, r7, lr}
+   2:	af03      	add	r7, sp, #12
+   4:	e92d 0f00 	stmdb	sp!, {r8, r9, sl, fp}
+   8:	b081      	sub	sp, #4
+   a:	ed2d 8b0c 	vpush	{d8-d13}
+   e:	b08a      	sub	sp, #40	; 0x28
+  10:	48bb      	ldr	r0, [pc, #748]	; (300 <main+0x300>)
+  12:	4478      	add	r0, pc
+  14:	6800      	ldr	r0, [r0, #0]
+  16:	9001      	str	r0, [sp, #4]
+  18:	6800      	ldr	r0, [r0, #0]
+  1a:	9009      	str	r0, [sp, #36]	; 0x24
+  1c:	20e0      	movs	r0, #224	; 0xe0
+  1e:	9002      	str	r0, [sp, #8]
+  20:	f7ff fffe 	bl	0 <gettid>
+  24:	ab02      	add	r3, sp, #8
+  26:	4601      	mov	r1, r0
+  28:	20f1      	movs	r0, #241	; 0xf1
+  2a:	2204      	movs	r2, #4
+  2c:	f7ff fffe 	bl	0 <syscall>
+  30:	b140      	cbz	r0, 44 <main+0x44>
+  32:	4602      	mov	r2, r0
+  34:	48b3      	ldr	r0, [pc, #716]	; (304 <main+0x304>)
+  36:	49b4      	ldr	r1, [pc, #720]	; (308 <main+0x308>)
+  38:	4478      	add	r0, pc
+  3a:	4479      	add	r1, pc
+  3c:	6800      	ldr	r0, [r0, #0]
+  3e:	30a8      	adds	r0, #168	; 0xa8
+  40:	f7ff fffe 	bl	0 <fprintf>
+  44:	f04f 7000 	mov.w	r0, #33554432	; 0x2000000
+  48:	f7ff fffe 	bl	0 <_Znaj>
+  4c:	4604      	mov	r4, r0
+  4e:	f04f 7000 	mov.w	r0, #33554432	; 0x2000000
+  52:	f7ff fffe 	bl	0 <_Znaj>
+  56:	4605      	mov	r5, r0
+  58:	f04f 7000 	mov.w	r0, #33554432	; 0x2000000
+  5c:	f7ff fffe 	bl	0 <_Znaj>
+  60:	4606      	mov	r6, r0
+  62:	a09f      	add	r0, pc, #636	; (adr r0, 2e0 <main+0x2e0>)
+  64:	f920 8aef 	vld1.64	{d8-d9}, [r0 :128]
+  68:	f04f 7000 	mov.w	r0, #33554432	; 0x2000000
+  6c:	f7ff fffe 	bl	0 <_Znaj>
+  70:	efc0 0051 	vmov.i32	q8, #1	; 0x00000001
+  74:	4680      	mov	r8, r0
+  76:	efc0 2054 	vmov.i32	q9, #4	; 0x00000004
+  7a:	2000      	movs	r0, #0
+  7c:	fff9 43c8 	vneg.s32	q10, q4
+  80:	1821      	adds	r1, r4, r0
+  82:	3010      	adds	r0, #16
+  84:	ef68 6870 	vtst.32	q11, q4, q8
+  88:	f1b0 7f00 	cmp.w	r0, #33554432	; 0x2000000
+  8c:	ff54 61d8 	vbsl	q11, q10, q4
+  90:	ef28 8862 	vadd.i32	q4, q4, q9
+  94:	fffb 4666 	vcvt.f32.s32	q10, q11
+  98:	f941 4a8f 	vst1.32	{d20-d21}, [r1]
+  9c:	d1ee      	bne.n	7c <main+0x7c>
+  9e:	ef80 a050 	vmov.i32	q5, #0	; 0x00000000
+  a2:	ed9f 9a95 	vldr	s18, [pc, #596]	; 2f8 <main+0x2f8>
+  a6:	f10d 0908 	add.w	r9, sp, #8
+  aa:	f10d 0a18 	add.w	sl, sp, #24
+  ae:	ed9f 8b90 	vldr	d8, [pc, #576]	; 2f0 <main+0x2f0>
+  b2:	f04f 0b00 	mov.w	fp, #0
+  b6:	4648      	mov	r0, r9
+  b8:	f7ff fffe 	bl	0 <_ZNSt6__ndk16chrono12steady_clock3nowEv>
+  bc:	2000      	movs	r0, #0
+  be:	1821      	adds	r1, r4, r0
+  c0:	f961 0a8f 	vld1.32	{d16-d17}, [r1]
+  c4:	1829      	adds	r1, r5, r0
+  c6:	ef40 0fca 	vmax.f32	q8, q8, q5
+  ca:	3010      	adds	r0, #16
+  cc:	f1b0 7f00 	cmp.w	r0, #33554432	; 0x2000000
+  d0:	f941 0a8f 	vst1.32	{d16-d17}, [r1]
+  d4:	d1f3      	bne.n	be <main+0xbe>
+  d6:	4650      	mov	r0, sl
+  d8:	f7ff fffe 	bl	0 <_ZNSt6__ndk16chrono12steady_clock3nowEv>
+  dc:	e9dd 0102 	ldrd	r0, r1, [sp, #8]
+  e0:	e9dd 2306 	ldrd	r2, r3, [sp, #24]
+  e4:	1a10      	subs	r0, r2, r0
+  e6:	eb63 0101 	sbc.w	r1, r3, r1
+  ea:	f7ff fffe 	bl	0 <__aeabi_l2d>
+  ee:	ec41 0b30 	vmov	d16, r0, r1
+  f2:	f10b 0b01 	add.w	fp, fp, #1
+  f6:	eef7 1ac9 	vcvt.f64.f32	d17, s18
+  fa:	f5bb 7f7a 	cmp.w	fp, #1000	; 0x3e8
+  fe:	ee60 0b88 	vmul.f64	d16, d16, d8
+ 102:	ee70 0ba1 	vadd.f64	d16, d16, d17
+ 106:	eeb7 9be0 	vcvt.f32.f64	s18, d16
+ 10a:	d1d4      	bne.n	b6 <main+0xb6>
+ 10c:	ef80 c050 	vmov.i32	q6, #0	; 0x00000000
+ 110:	ed9f ba79 	vldr	s22, [pc, #484]	; 2f8 <main+0x2f8>
+ 114:	f10d 0908 	add.w	r9, sp, #8
+ 118:	f10d 0a18 	add.w	sl, sp, #24
+ 11c:	f04f 0b00 	mov.w	fp, #0
+ 120:	4648      	mov	r0, r9
+ 122:	f7ff fffe 	bl	0 <_ZNSt6__ndk16chrono12steady_clock3nowEv>
+ 126:	2000      	movs	r0, #0
+ 128:	1821      	adds	r1, r4, r0
+ 12a:	f961 0a8f 	vld1.32	{d16-d17}, [r1]
+ 12e:	1831      	adds	r1, r6, r0
+ 130:	ef40 0fcc 	vmax.f32	q8, q8, q6
+ 134:	3010      	adds	r0, #16
+ 136:	f1b0 7f00 	cmp.w	r0, #33554432	; 0x2000000
+ 13a:	f941 0a8f 	vst1.32	{d16-d17}, [r1]
+ 13e:	d1f3      	bne.n	128 <main+0x128>
+ 140:	4650      	mov	r0, sl
+ 142:	f7ff fffe 	bl	0 <_ZNSt6__ndk16chrono12steady_clock3nowEv>
+ 146:	e9dd 0102 	ldrd	r0, r1, [sp, #8]
+ 14a:	e9dd 2306 	ldrd	r2, r3, [sp, #24]
+ 14e:	1a10      	subs	r0, r2, r0
+ 150:	eb63 0101 	sbc.w	r1, r3, r1
+ 154:	f7ff fffe 	bl	0 <__aeabi_l2d>
+ 158:	ec41 0b30 	vmov	d16, r0, r1
+ 15c:	f10b 0b01 	add.w	fp, fp, #1
+ 160:	eef7 1acb 	vcvt.f64.f32	d17, s22
+ 164:	f5bb 7f7a 	cmp.w	fp, #1000	; 0x3e8
+ 168:	ee60 0b88 	vmul.f64	d16, d16, d8
+ 16c:	ee70 0ba1 	vadd.f64	d16, d16, d17
+ 170:	eeb7 bbe0 	vcvt.f32.f64	s22, d16
+ 174:	d1d4      	bne.n	120 <main+0x120>
+ 176:	ed9f aa61 	vldr	s20, [pc, #388]	; 2fc <main+0x2fc>
+ 17a:	ab02      	add	r3, sp, #8
+ 17c:	ed9f ca5e 	vldr	s24, [pc, #376]	; 2f8 <main+0x2f8>
+ 180:	f10d 0a18 	add.w	sl, sp, #24
+ 184:	ee29 9a0a 	vmul.f32	s18, s18, s20
+ 188:	f44f 7b7a 	mov.w	fp, #1000	; 0x3e8
+ 18c:	46c1      	mov	r9, r8
+ 18e:	4618      	mov	r0, r3
+ 190:	4698      	mov	r8, r3
+ 192:	f7ff fffe 	bl	0 <_ZNSt6__ndk16chrono12steady_clock3nowEv>
+ 196:	4620      	mov	r0, r4
+ 198:	4649      	mov	r1, r9
+ 19a:	f44f 1200 	mov.w	r2, #2097152	; 0x200000
+ 19e:	ef80 0050 	vmov.i32	q0, #0	; 0x00000000
+ 1a2:	f920 2a8d 	vld1.32	{d2-d3}, [r0]!
+ 1a6:	ef00 2f42 	vmax.f32	q1, q0, q1
+ 1aa:	3a01      	subs	r2, #1
+ 1ac:	f901 2a8d 	vst1.32	{d2-d3}, [r1]!
+ 1b0:	dcf7      	bgt.n	1a2 <main+0x1a2>
+ 1b2:	4650      	mov	r0, sl
+ 1b4:	f7ff fffe 	bl	0 <_ZNSt6__ndk16chrono12steady_clock3nowEv>
+ 1b8:	e9dd 0102 	ldrd	r0, r1, [sp, #8]
+ 1bc:	e9dd 2306 	ldrd	r2, r3, [sp, #24]
+ 1c0:	1a10      	subs	r0, r2, r0
+ 1c2:	eb63 0101 	sbc.w	r1, r3, r1
+ 1c6:	f7ff fffe 	bl	0 <__aeabi_l2d>
+ 1ca:	ec41 0b30 	vmov	d16, r0, r1
+ 1ce:	f1bb 0b01 	subs.w	fp, fp, #1
+ 1d2:	eef7 1acc 	vcvt.f64.f32	d17, s24
+ 1d6:	4643      	mov	r3, r8
+ 1d8:	ee60 0b88 	vmul.f64	d16, d16, d8
+ 1dc:	ee70 0ba1 	vadd.f64	d16, d16, d17
+ 1e0:	eeb7 cbe0 	vcvt.f32.f64	s24, d16
+ 1e4:	d1d3      	bne.n	18e <main+0x18e>
+ 1e6:	ee2b 8a0a 	vmul.f32	s16, s22, s20
+ 1ea:	2000      	movs	r0, #0
+ 1ec:	efc0 0050 	vmov.i32	q8, #0	; 0x00000000
+ 1f0:	2106      	movs	r1, #6
+ 1f2:	e9cd 0002 	strd	r0, r0, [sp, #8]
+ 1f6:	f88d 1008 	strb.w	r1, [sp, #8]
+ 1fa:	f247 3161 	movw	r1, #29537	; 0x7361
+ 1fe:	f2c0 016d 	movt	r1, #109	; 0x6d
+ 202:	9004      	str	r0, [sp, #16]
+ 204:	f8cd 1009 	str.w	r1, [sp, #9]
+ 208:	eb09 0100 	add.w	r1, r9, r0
+ 20c:	f961 2a8f 	vld1.32	{d18-d19}, [r1]
+ 210:	1829      	adds	r1, r5, r0
+ 212:	3010      	adds	r0, #16
+ 214:	f961 4a8f 	vld1.32	{d20-d21}, [r1]
+ 218:	f1b0 7f00 	cmp.w	r0, #33554432	; 0x2000000
+ 21c:	ef44 2ee2 	vceq.f32	q9, q10, q9
+ 220:	fff0 25e2 	vmvn	q9, q9
+ 224:	ff60 08e2 	vsub.i32	q8, q8, q9
+ 228:	d1ee      	bne.n	208 <main+0x208>
+ 22a:	eff0 28e0 	vext.8	q9, q8, q8, #8
+ 22e:	1c59      	adds	r1, r3, #1
+ 230:	ef60 08e2 	vadd.i32	q8, q8, q9
+ 234:	fffc 2c60 	vdup.32	q9, d16[1]
+ 238:	ef60 08e2 	vadd.i32	q8, q8, q9
+ 23c:	ee10 2b90 	vmov.32	r2, d16[0]
+ 240:	b122      	cbz	r2, 24c <main+0x24c>
+ 242:	4832      	ldr	r0, [pc, #200]	; (30c <main+0x30c>)
+ 244:	4478      	add	r0, pc
+ 246:	f7ff fffe 	bl	0 <printf>
+ 24a:	e003      	b.n	254 <main+0x254>
+ 24c:	4830      	ldr	r0, [pc, #192]	; (310 <main+0x310>)
+ 24e:	4478      	add	r0, pc
+ 250:	f7ff fffe 	bl	0 <printf>
+ 254:	f89d 0008 	ldrb.w	r0, [sp, #8]
+ 258:	ee2c aa0a 	vmul.f32	s20, s24, s20
+ 25c:	07c0      	lsls	r0, r0, #31
+ 25e:	bf1c      	itt	ne
+ 260:	9804      	ldrne	r0, [sp, #16]
+ 262:	f7ff fffe 	blne	0 <_ZdlPv>
+ 266:	482b      	ldr	r0, [pc, #172]	; (314 <main+0x314>)
+ 268:	2108      	movs	r1, #8
+ 26a:	4478      	add	r0, pc
+ 26c:	f7ff fffe 	bl	0 <printf>
+ 270:	eef7 0ac9 	vcvt.f64.f32	d16, s18
+ 274:	4828      	ldr	r0, [pc, #160]	; (318 <main+0x318>)
+ 276:	4478      	add	r0, pc
+ 278:	ec53 2b30 	vmov	r2, r3, d16
+ 27c:	f7ff fffe 	bl	0 <printf>
+ 280:	eef7 0ac8 	vcvt.f64.f32	d16, s16
+ 284:	4825      	ldr	r0, [pc, #148]	; (31c <main+0x31c>)
+ 286:	4478      	add	r0, pc
+ 288:	ec53 2b30 	vmov	r2, r3, d16
+ 28c:	f7ff fffe 	bl	0 <printf>
+ 290:	eef7 0aca 	vcvt.f64.f32	d16, s20
+ 294:	4822      	ldr	r0, [pc, #136]	; (320 <main+0x320>)
+ 296:	4478      	add	r0, pc
+ 298:	ec53 2b30 	vmov	r2, r3, d16
+ 29c:	f7ff fffe 	bl	0 <printf>
+ 2a0:	4620      	mov	r0, r4
+ 2a2:	f7ff fffe 	bl	0 <_ZdaPv>
+ 2a6:	4628      	mov	r0, r5
+ 2a8:	f7ff fffe 	bl	0 <_ZdaPv>
+ 2ac:	4630      	mov	r0, r6
+ 2ae:	f7ff fffe 	bl	0 <_ZdaPv>
+ 2b2:	4648      	mov	r0, r9
+ 2b4:	f7ff fffe 	bl	0 <_ZdaPv>
+ 2b8:	9809      	ldr	r0, [sp, #36]	; 0x24
+ 2ba:	9901      	ldr	r1, [sp, #4]
+ 2bc:	6809      	ldr	r1, [r1, #0]
+ 2be:	1a08      	subs	r0, r1, r0
+ 2c0:	bf01      	itttt	eq
+ 2c2:	2000      	moveq	r0, #0
+ 2c4:	b00a      	addeq	sp, #40	; 0x28
+ 2c6:	ecbd 8b0c 	vpopeq	{d8-d13}
+ 2ca:	b001      	addeq	sp, #4
+ 2cc:	bf04      	itt	eq
+ 2ce:	e8bd 0f00 	ldmiaeq.w	sp!, {r8, r9, sl, fp}
+ 2d2:	bdf0      	popeq	{r4, r5, r6, r7, pc}
+ 2d4:	f7ff fffe 	bl	0 <__stack_chk_fail>
+ 2d8:	bf00      	nop
+ 2da:	bf00      	nop
+ 2dc:	bf00      	nop
+ 2de:	bf00      	nop
+ 2e0:	00000000 	.word	0x00000000
+ 2e4:	00000001 	.word	0x00000001
+ 2e8:	00000002 	.word	0x00000002
+ 2ec:	00000003 	.word	0x00000003
+ 2f0:	a0b5ed8d 	.word	0xa0b5ed8d
+ 2f4:	3eb0c6f7 	.word	0x3eb0c6f7
+ 2f8:	00000000 	.word	0x00000000
+ 2fc:	3a83126f 	.word	0x3a83126f
+ 300:	000002ea 	.word	0x000002ea
+ 304:	000002c8 	.word	0x000002c8
+ 308:	000002ca 	.word	0x000002ca
+ 30c:	000000c4 	.word	0x000000c4
+ 310:	000000be 	.word	0x000000be
+ 314:	000000a6 	.word	0x000000a6
+ 318:	0000009e 	.word	0x0000009e
+ 31c:	00000092 	.word	0x00000092
+ 320:	00000086 	.word	0x00000086

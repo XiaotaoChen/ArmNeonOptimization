@@ -42,22 +42,22 @@ ${BUILD_ANDROID_NDK_HOME}/toolchains/aarch64-linux-android-4.9/prebuilt/darwin-x
     -d  ${BUILD_DIR}/CMakeFiles/assemblyEx2Rgb2Gray.dir/assemblyEx2Rgb2Gray.cpp.o \
     > ${DISASSEMBLY_FILES_PATH}/assemblyEx2Rgb2Gray_${ABI}.txt
 
-# adb shell "mkdir -p ${DEPLOY_DIR}"
+adb shell "mkdir -p ${DEPLOY_DIR}"
 
-# ##### run arr weight sum experiments
-# adb push ${BUILD_DIR}/assemblyEx1ArrWeightSum ${DEPLOY_DIR}
-# adb shell "cd ${DEPLOY_DIR}; ./assemblyEx1ArrWeightSum"
+##### run arr weight sum experiments
+adb push ${BUILD_DIR}/assemblyEx1ArrWeightSum ${DEPLOY_DIR}
+adb shell "cd ${DEPLOY_DIR}; ./assemblyEx1ArrWeightSum"
 
-# ##### run rgb to gray experiments
-# INPUT_NAME=dragonball.jpg
-# OUTPUT_NAME=gray_${INPUT_NAME}
-# INPUT_PATH=${basepath}/datas/images/${INPUT_NAME}
-# OUTPUT_PATH=${basepath}/datas/results/
+##### run rgb to gray experiments
+INPUT_NAME=dragonball.jpg
+OUTPUT_NAME=gray_${INPUT_NAME}
+INPUT_PATH=${basepath}/datas/images/${INPUT_NAME}
+OUTPUT_PATH=${basepath}/datas/results/
 
-# adb push ${INPUT_PATH} ${DEPLOY_DIR}
-# adb push ${BUILD_DIR}/assemblyEx2Rgb2Gray ${DEPLOY_DIR}
-# adb shell "cd ${DEPLOY_DIR}; ./assemblyEx2Rgb2Gray ${INPUT_NAME} ${OUTPUT_NAME}"
-# adb pull ${DEPLOY_DIR}/${OUTPUT_NAME} ${OUTPUT_PATH}
+adb push ${INPUT_PATH} ${DEPLOY_DIR}
+adb push ${BUILD_DIR}/assemblyEx2Rgb2Gray ${DEPLOY_DIR}
+adb shell "cd ${DEPLOY_DIR}; ./assemblyEx2Rgb2Gray ${INPUT_NAME} ${OUTPUT_NAME}"
+adb pull ${DEPLOY_DIR}/${OUTPUT_NAME} ${OUTPUT_PATH}
 
 
 
